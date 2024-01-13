@@ -1,0 +1,25 @@
+#button {
+    /*-fx-font: bold italic 20pt "Arial";*/
+    -fx-effect: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0 );
+ }
+ #font-button {
+    
+    -fx-effect: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0 );
+}
+
+#anchor{
+    -fx-background-color: red;
+    }
+    
+
+
+
+
+#titled_pane > .title 
+{
+-fx-color: -fx-focus-color;
+}
+
+
+
+

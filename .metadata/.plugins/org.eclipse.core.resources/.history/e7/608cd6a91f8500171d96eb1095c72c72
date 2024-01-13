@@ -1,0 +1,156 @@
+package viewController;
+
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import control.ControlServer;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+
+public class ServerController implements Initializable{
+	@FXML
+	TextArea conversation_TextA;	
+	@FXML
+	TextField chat_TextF;
+	@FXML
+	TextField name_TextF;
+	@FXML
+	TextField port_TextF;
+	@FXML
+	Button connect_Button;
+	@FXML
+	Button send_Button;
+	@FXML
+	Button clear_Button;
+	@FXML
+	Button cancel_Button;
+	@FXML
+	RadioButton client_RadioB;
+	@FXML
+	MenuItem close_MenuItem;
+	@FXML
+	MenuItem about_MenuItem;
+	@FXML
+	MenuItem home_MenuItem;
+	
+	ServerSocket serverSocket;
+	Socket socket;
+	String message_distant="";
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		initComponents();
+		initActions();
+	}
+	public void initComponents() {
+		connect_Button.setDisable(false);
+		cancel_Button.setDisable(true);
+	}
+	public void initActions() {
+		close_MenuItem.setOnAction(event->{
+			 System.exit(0);
+		 });
+		
+	     home_MenuItem.setOnAction(event->{
+	    	    
+				try {
+					Scene scene = new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("view/Home.fxml")));
+					Main.globalStage.setScene(scene);
+					Main.globalStage.show();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+		 });
+	     
+	     about_MenuItem.setOnAction(event->{
+
+	     });
+	     
+	     send_Button.setOnAction(event->{
+	    	 try {
+	    		 conversation_TextA.appendText(InetAddress.getLocalHost().getHostName()+": "+chat_TextF.getText()+"\n");
+				 ControlServer.out.println("dd"+": "+chat_TextF.getText().toString());
+				 ControlServer.out.flush();
+				
+			 } catch (Exception e) {
+				e.printStackTrace();
+			 }
+	    	 chat_TextF.clear();
+
+	     });
+	     
+	     clear_Button.setOnAction(event->{
+	    	 conversation_TextA.clear();
+	    	 chat_TextF.clear();
+
+	     });
+	     
+	     connect_Button.setOnAction(event->{
+	    	 connect_Button.setDisable(true);
+			 cancel_Button.setDisable(false);
+
+	    	 new Thread() {
+	 				public void run() {
+	 			    	 ControlServer.openConnection(serverSocket, socket);
+	 			    	new Thread() {
+			 				public void run() {
+			 					while(true) {
+			 						if(message_distant!=null)
+			 						if(!message_distant.equals("") )
+			 							conversation_TextA.appendText(message_distant+"\n");
+			 						//if(!b)
+			 							//break;
+			 						message_distant="";
+			 						try {
+			 							message_distant = ControlServer.in.readLine();
+			 						} catch (Exception e) {
+			 							cancel_Button.fire();
+			 							break;
+			 						}
+			 					
+			 					}	
+			 				}
+			 			}.start();
+	 				}
+	 			}.start();
+	 			
+	 		 	
+	    		// connect_Button.setDisable(true);
+	 			
+	 			/*
+	 			Alert alert=new Alert(Alert.AlertType.INFORMATION);
+	 			alert.setContentText("Something wrong!");
+	 			alert.show();*/
+
+	     });
+	     
+	     cancel_Button.setOnAction(event->{
+	    	 connect_Button.setDisable(false);
+			 cancel_Button.setDisable(true);
+	    	ControlServer.closeConnection(socket);
+	     });
+	     
+	     ControlServer.changeState.addListener(new ChangeListener<Boolean>() {
+	    	 public void changed(ObservableValue<? extends Boolean> Observable,Boolean oldValue,Boolean newValue) {
+	    		 connect_Button.setDisable(false);
+				 cancel_Button.setDisable(true);
+				 System.out.println("hello");
+	    	 }
+			
+	     });
+	}
+	
+}

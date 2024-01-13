@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewController.ServerController">
+   <children>
+      <TitledPane id="titled_pane"  animated="false" layoutX="7.0" layoutY="64.0" prefHeight="376.0" prefWidth="386.0" text="Chat Panel">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ScrollPane layoutX="4.0" layoutY="4.0" prefHeight="288.0" prefWidth="376.0">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="285.0" prefWidth="374.0">
+                           <children>
+                              <TextArea fx:id="conversation_TextA" layoutX="-3.0" layoutY="-5.0" prefHeight="294.0" prefWidth="379.0" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+                  <TextField fx:id="chat_TextF" layoutX="6.0" layoutY="303.0" prefHeight="33.0" prefWidth="312.0" promptText="Enter your message here.." />
+                  <Button id="button" fx:id="send_Button" layoutX="327.0" layoutY="297.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" text="Send" />
+                  <Button  id="button" fx:id="clear_Button" layoutX="326.0" layoutY="324.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" text="Clear" />
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <MenuBar layoutX="-7.0" prefHeight="25.0" prefWidth="414.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem fx:id="home_MenuItem" mnemonicParsing="false" text="Home" />
+                  <MenuItem fx:id="close_MenuItem" mnemonicParsing="false" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem fx:id="about_MenuItem" mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <Button id="button" fx:id="connect_Button" layoutX="267.0" layoutY="33.0" mnemonicParsing="false" text="Connect" />
+      <TextField fx:id="port_TextF" layoutX="163.0" layoutY="33.0" prefHeight="25.0" prefWidth="95.0" promptText="Enter Port" />
+      <TextField fx:id="name_TextF" layoutX="8.0" layoutY="33.0" prefHeight="25.0" prefWidth="136.0" promptText="Enter name" />
+      <Button id="button" fx:id="cancel_Button" layoutX="332.0" layoutY="33.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Cancel" />
+   </children>
+</AnchorPane>

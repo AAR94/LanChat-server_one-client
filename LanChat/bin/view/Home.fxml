@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.77" prefHeight="450.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewController.HomeController">
+   <children>
+      <MenuBar layoutX="-5.0" layoutY="-1.0" prefHeight="25.0" prefWidth="415.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="close_MenuItem" mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="about_MenuItem" mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <RadioButton fx:id="server_RadioB" layoutX="109.0" layoutY="189.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="92.0" text="Server">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="#3ab80d" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <toggleGroup>
+            <ToggleGroup fx:id="typeConnection_ToggleG" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="client_RadioB" layoutX="109.0" layoutY="227.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="92.0" text="Client" toggleGroup="$typeConnection_ToggleG">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="#3ab80d" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </RadioButton>
+      <Label layoutX="82.0" layoutY="157.0" prefHeight="21.0" prefWidth="252.0" text="Select what you want to be :">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="#3ab80d" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,0 +1,11 @@
+INDEX VERSION 1.134+C:\Users\LK-Technologie\Documents\MyFiles\Programmation\vs\chatLan\.metadata\.plugins\org.eclipse.jdt.core
+3846287798.index
+497144382.index
+1819612291.index
+7072578.index
+1865797976.index
+337213195.index
+3641378493.index
+1885601482.index
+3172432998.index
+3675588864.index
